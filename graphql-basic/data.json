@@ -1,0 +1,19 @@
+{
+    "books": [
+        {
+            "id": 1,
+            "title": "JavaScript Advanced",
+            "author": "Armin Van Buuren"
+        },
+        {
+            "id": 2,
+            "title": "Python Variables",
+            "author": "Nicky Romero"
+        },
+        {
+            "id": 3,
+            "title": "PHP Fundamentals",
+            "author": "Paul Van Dyk"
+        }
+    ]
+}
