@@ -1,0 +1,11 @@
+query getWelcome {
+  
+  getWelcome 
+  
+}
+
+query getPersonalInfo($name: String, $age :Int) {
+  
+  getPersonalInfo(name : $name , age: $age)
+  
+}
