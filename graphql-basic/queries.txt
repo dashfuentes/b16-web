@@ -9,3 +9,32 @@ query getPersonalInfo($name: String, $age :Int) {
   getPersonalInfo(name : $name , age: $age)
   
 }
+
+query getBooks {
+  getBooks{
+    id
+    author
+  }
+}
+
+mutation addBook($id: Int!, $title: String, $author: String ){
+  addBook(id: $id, title: $title, author: $author){
+    title
+    author
+  }
+}
+
+mutation updateBook($id: Int!, $title: String, $author: String){
+  
+  updateBook(id: $id, title: $title, author: $author){
+    title
+    author
+  }
+}
+
+mutation deleteBook($id: Int!){
+  deleteBook(id: $id){
+    id
+    title
+  }
+}
