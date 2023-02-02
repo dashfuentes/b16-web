@@ -13,3 +13,13 @@ export async function connect() {
     }
  
 }
+
+//Connect to Mongo Atlas
+
+// const uri = "mongodb+srv://dashfuentes:Test123@cluster0.3pioj25.mongodb.net/?retryWrites=true&w=majority";
+
+// mongoose.connect( uri, {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true
+// } ).then( ( db ) => console.log( 'DB connected!!' ) )
+// .catch(err => console.log(err))

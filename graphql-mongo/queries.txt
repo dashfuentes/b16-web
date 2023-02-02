@@ -1,0 +1,23 @@
+query getBooks {
+  getBooks {
+    _id
+    title
+    author
+  }
+}
+
+mutation createBook($title: String, $author: String, $dateofreleased: String){
+  createBook(title: $title, author: $author, dateofreleased : $dateofreleased){
+    _id
+    title
+  }
+}
+
+
+mutation updateBook($_id:ID, $title: String, $author: String, $dateofreleased: String){
+  updateBook(_id : $_id,title: $title, author: $author, dateofreleased : $dateofreleased){
+    _id
+    title
+    dateofreleased
+  }
+}
