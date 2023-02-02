@@ -8,15 +8,23 @@ const TypeDefs = `
 type Query {
     getBooks:[Book]
 }
+type Mutation {
+    createBook(title:String,author:String,dateofreleased: String) : Book
+    updateBook(_id:ID,title:String,author:String,dateofreleased: String) : Book
+}
 
 type Book {
     _id: ID
     title: String
     author: String
-    dateofrealese : String
+    dateofreleased : String
 }
 
 `
+
+//Delete
+
+//Find by title
 
 export default makeExecutableSchema( {
     typeDefs: TypeDefs,

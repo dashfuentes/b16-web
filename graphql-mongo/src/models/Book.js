@@ -3,7 +3,7 @@ import { Schema, model } from "mongoose";
 const bookSchema = new Schema( {
     title: String,
     author: String,
-    dateofrealease: String
+    dateofreleased: String
 } );
 
 export default model('Book', bookSchema)
