@@ -25,11 +25,11 @@ export const Home = () => {
 		//console.log(data);
 	}
 	return (
-		<div>
+		<div className ="bg-slate-100 flex flex-wrap w-full">
             {characters && 
                 characters.map( ( { id, name, gender } ) => (
-                    <div data-id={id}>
-                        <h1>Name:<span>{name }</span></h1>
+                    <div data-id={id} className="child-content w-28 h-28">
+                        <h3>Name:<span>{name }</span></h3>
                         <p>Gender:<span>{ gender}</span></p>
 					</div>
                 ))	

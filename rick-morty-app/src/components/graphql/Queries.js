@@ -13,5 +13,3 @@ query characters{
     }
 }
 `
-
-export const EPISODES = 
