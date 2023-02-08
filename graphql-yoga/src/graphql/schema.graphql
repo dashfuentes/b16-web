@@ -1,5 +1,12 @@
 type Query {
     getNotes: [Note]
+   # Find by title 
+}
+
+type Mutation {
+ createNote(title:String, content: String, date: String, author: String) : Note 
+ # update
+ # delete
 }
 
 type Note {
