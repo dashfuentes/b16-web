@@ -1,4 +1,4 @@
-import { server } from './server.js';
+import  server   from './server.js';
 import "./database.js";
 
 server.start( { port: 3000 }, ( { port } ) => {
