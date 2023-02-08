@@ -1,0 +1,11 @@
+type Query {
+    getNotes: [Note]
+}
+
+type Note {
+    _id : ID
+    title: String
+    content: String
+    date: String
+    author: String
+}
