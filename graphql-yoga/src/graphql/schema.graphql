@@ -6,7 +6,9 @@ type Query {
 type Mutation {
  createNote(title:String, content: String, date: String, author: String) : Note 
  # update
+ updateNote(_id:ID,title:String, content: String, date: String, author: String) : Note
  # delete
+ removeNote(_id:ID): [Note]
 }
 
 type Note {
