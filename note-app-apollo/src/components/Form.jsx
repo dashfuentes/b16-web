@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useMutation } from '@apollo/client';
 import { CREATE_NOTE } from '../graphql/Mutation';
+import { UPDATE_NOTE } from '../graphql/Mutation';
 import {useNavigate, Link, useLocation} from "react-router-dom"
 
 function Form() {
@@ -11,6 +12,7 @@ function Form() {
   const [title, setTitle] = useState( "" );
   const [content, setContent] = useState( "" );
   const [date, setDate] = useState( "" );
+  const [_id, setId]  = useState("")
   /* Global variables declarion block   */
 
   /* Location store variables   */
@@ -26,7 +28,8 @@ function Form() {
       if ( getState ) {
         setTitle( titleNote );
         setContent( contentNote );
-        setDate(dateNote)
+        setDate( dateNote )
+        setId(noteId)
       }
 
     }, [])
@@ -35,7 +38,8 @@ function Form() {
 
 
   //Declare the mutation fn
-  const [createNote] =  useMutation(CREATE_NOTE, {})
+  const [createNote] = useMutation( CREATE_NOTE, {} )
+  const [updateNote] = useMutation( UPDATE_NOTE, {} );
 
   return (
   
@@ -43,9 +47,17 @@ function Form() {
       className="my-14"
       onSubmit={ async ( event ) => {
         event.preventDefault();
-         await createNote( {
-          variables: {title,content,date}
-         } )
+
+        if ( getState ) {
+          //Update
+          await updateNote({variables:{_id,title,content,date}})
+        } else{
+          //Create
+          await createNote( {
+            variables: {title,content,date}
+           } )
+        }
+        
         navigate('/home')
 
       }}    
@@ -84,7 +96,10 @@ function Form() {
           class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" />
     </div>
  
-    <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Create Note</button>
+      <button
+        type="submit"
+        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+      >{getState ? "Update Note": "Create Note" }</button>
 </form>
 
   )
