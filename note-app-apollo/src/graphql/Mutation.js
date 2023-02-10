@@ -24,3 +24,15 @@ export const UPDATE_NOTE = gql`
         }
     }
 `
+export const REMOVE_NOTE = gql`
+
+mutation removeNote($_id: ID){
+  removeNote(_id: $_id){
+           _id
+            title
+            content
+            date
+            author
+  }
+}
+`
