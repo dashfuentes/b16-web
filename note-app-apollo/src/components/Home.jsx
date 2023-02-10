@@ -2,6 +2,7 @@ import React, {useEffect} from 'react'
 import noteImg from '../assets/simple-notes.png'
 import { useLazyQuery, useMutation } from '@apollo/client'
 import { GET_NOTES } from '../graphql/Queries';
+import {Link} from "react-router-dom"
 
 
 function Home() {
@@ -24,7 +25,11 @@ function Home() {
           {data && data.getNotes.map( ( { _id, title, content, date } ) => (
               
 
-              <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <Link
+              data-id= {_id}
+              to="/create-note"
+              state={{_id: _id, title:title,content:content, date:date}}
+              className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
               <a href="#">
                   <img className="rounded-t-lg" src={noteImg} alt="" />
               </a>
@@ -36,7 +41,7 @@ function Home() {
                       <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">{content}</p>
               
               </div>
-            </div>
+            </Link>
           ))}
        
           
