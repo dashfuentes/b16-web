@@ -15,7 +15,9 @@ const Mutation = {
     async removeNote( _, { _id } ) {
         await Note.findByIdAndDelete( _id )
         return await Note.find();
-    }
+    },
+
+ 
 
 
 }

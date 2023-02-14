@@ -23,8 +23,7 @@ function Home() {
 		console.log(data);
 	}
 
-  return (
-   
+	return (
 		<div className="flex flex-wrap gap-5">
 			{data &&
 				data.getNotes.map(({ _id, title, content, date }) => (
@@ -44,24 +43,22 @@ function Home() {
 							</a>
 							<div className="p-5">
 								<div className="w-72">
-									{" "}
 									<h3 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
 										{title}
-									</h3>{" "}
+									</h3>
 								</div>
 
 								<p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
 									{content}
 								</p>
-              </div>
-             
+							</div>
 						</Link>
-						
-            <div className="p-5">
+
+						<div className="p-5">
 							<button
 								type="button"
-                  onClick={async ( event ) => {
-                  console.log(_id)
+								onClick={async (event) => {
+									console.log(_id);
 									await removeNote({
 										variables: { _id: _id },
 									});
@@ -73,9 +70,7 @@ function Home() {
 						</div>
 					</>
 				))}
-    </div>
-     
-      
+		</div>
 	);
 }
 

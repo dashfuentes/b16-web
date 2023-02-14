@@ -16,7 +16,7 @@ function Form() {
   /* Global variables declarion block   */
 
   /* Location store variables   */
-  const getState = location.state;
+  const getState = location.state; 
   const noteId = getState && getState !== undefined ? getState._id : "";
   const titleNote = getState && getState !== undefined ? getState.title : "";
   const contentNote = getState && getState !== undefined ? getState.content : "";

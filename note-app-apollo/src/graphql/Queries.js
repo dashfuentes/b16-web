@@ -10,3 +10,9 @@ export const GET_NOTES = gql`
         }
     }
 `
+
+export const LOGIN =  gql`
+   query login($email:String, $password: String) {
+       login(email: $email, password: $password)
+   }
+`
