@@ -1,12 +1,14 @@
-import React,{useState} from 'react'
+import React,{useState, useRef} from 'react'
 import {LOGIN} from "../graphql/Queries"
 import {useLazyQuery} from "@apollo/client";
 import {useNavigate} from "react-router-dom"
 
 function Login() {
 
+  const navigate = useNavigate();
   const [email, setEmail] =  useState("");
   const [password, setPassword] =  useState("");
+  const [isInvalid, setInvalid ] = useState ("")
 
   const [login, {data, error}] =  useLazyQuery(LOGIN, {
     variables: {email, password}
@@ -14,19 +16,23 @@ function Login() {
 
 
   return (
-   
+   <>
 <form
    onSubmit = { async (event)=> {
          event.preventDefault();
          //Execute the login query
         await login().then( function (response){
            console.log('response', response);
+           var data = response.data.login;
 
-           //valid if the user exist 
+           if(data === 'Ok User'){
+            //valid if the user exist  and redirect to the /home page
+              navigate("/home")
 
-           //Set invalid user label
-
-           //Redirect
+           } else{
+             //Set invalid user label
+             setInvalid("Invalid Credentials!!!")
+           }
         })
 
 }} 
@@ -53,7 +59,13 @@ className="w-2/4 grid bg-slate-500 ml-80 py-20 pr-5 px-5 pl-5">
   </div>
  
   <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Login</button>
+  <div className="mb-6">
+    <p className="text-sm text-red-600 mt-5">
+      {isInvalid}
+    </p>
+    </div>
 </form>
+   </>
 
   )
 }

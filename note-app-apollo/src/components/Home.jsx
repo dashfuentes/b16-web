@@ -28,6 +28,7 @@ function Home() {
 			{data &&
 				data.getNotes.map(({ _id, title, content, date }) => (
 					<>
+					<div>
 						<Link
 							data-id={_id}
 							to="/create-note"
@@ -54,7 +55,7 @@ function Home() {
 							</div>
 						</Link>
 
-						<div className="p-5">
+						<div>
 							<button
 								type="button"
 								onClick={async (event) => {
@@ -67,6 +68,8 @@ function Home() {
 							>
 								Delete
 							</button>
+						</div>
+
 						</div>
 					</>
 				))}
