@@ -5,6 +5,7 @@ import Login from "./components/Login";
 import Home from "./components/Home";
 import Navbar from "./components/Navbar";
 import Form from "./components/Form";
+import NoteDetail from "./components/NoteDetail";
 
 function App() {
 	const client = new ApolloClient({
@@ -20,6 +21,8 @@ function App() {
 					<Route path="/home" element={<Home />} />
 					<Route path="/create-note" element={<Form />} />
 					<Route index element={<Login />} />
+					<Route path="/note-detail" element={<NoteDetail />} />
+
 				</Routes>
 			</ApolloProvider>
 		</Router>
