@@ -4,10 +4,17 @@ import { useLazyQuery, useMutation } from "@apollo/client";
 import { GET_NOTES } from "../graphql/Queries";
 import { REMOVE_NOTE } from "../graphql/Mutation";
 import { Link } from "react-router-dom";
+import userStore from "../config/UserStore";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
+	const navigate = useNavigate();
+	const getToken = userStore((state) => state.token);
 	//Execute the query function before render
-	useEffect(() => {
+	useEffect( () => {
+		console.log( 'get store', getToken )
+		var isAuthenticated = getToken.token
+		if(!isAuthenticated) return navigate("/")
 		getNotes();
 	}, []);
 

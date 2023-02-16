@@ -1,14 +1,18 @@
 import React,{useState, useRef} from 'react'
 import {LOGIN} from "../graphql/Queries"
 import {useLazyQuery} from "@apollo/client";
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom";
+import userStore from '../config/UserStore';
 
 function Login() {
 
   const navigate = useNavigate();
   const [email, setEmail] =  useState("");
   const [password, setPassword] =  useState("");
-  const [isInvalid, setInvalid ] = useState ("")
+  const [isInvalid, setInvalid] = useState( "" );
+  const addToken = userStore( ( state ) => state.addToken );
+  const getAuthorization = userStore( ( state ) => state.token ) 
+	console.log(getAuthorization)
 
   const [login, {data, error}] =  useLazyQuery(LOGIN, {
     variables: {email, password}
@@ -27,6 +31,7 @@ function Login() {
 
            if(data === 'Ok User'){
             //valid if the user exist  and redirect to the /home page
+             addToken({ token: true });
               navigate("/home")
 
            } else{
