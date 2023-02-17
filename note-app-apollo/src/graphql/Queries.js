@@ -20,6 +20,7 @@ export const LOGIN =  gql`
 export const GET_NOTE_BY_ID = gql`
     query getNoteByTitle($title : String) {
         getNoteByTitle(title: $title){
+            _id
             title
             content
             date
