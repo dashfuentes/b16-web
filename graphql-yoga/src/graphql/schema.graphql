@@ -1,6 +1,8 @@
 type Query {
     getNotes: [Note]
     login(email:String, password:String) : String
+    #Find by title
+    getNoteByTitle(title:String): Note
 }
 
 type Mutation {
